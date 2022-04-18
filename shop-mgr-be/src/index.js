@@ -1,12 +1,26 @@
 const koa = require('koa');
+const Router = require('@koa/router');
 
 const app = new koa();
 
+const router = new Router({
+  prefix:'/auth'
+});
+
+router.get('/register', async (context) => {
+  context.body = '注册成功';
+});
+
+app.use(router.routes());
+
+app.listen(3000, () => {
+  console.log('启动成功');
+});
 
 //通过app.use注册中间件
 //中间件本质上就是一个函数
 //context上下文-当前请求的相关信息都在里面
-app.use(async(context, next) =>{
+// app.use(async(context, next) =>{
   // const { request:req } = context;
   
   // const { url } = req;
@@ -31,23 +45,20 @@ app.use(async(context, next) =>{
   // console.log(3);
   // context.status = 404;
   
-  await next();
+//   await next();
  
   
-});
+// });
 
-app.use(async (context, next) =>{
-  await next();
-});
+// app.use(async (context, next) =>{
+//   await next();
+// });
 
-app.use(async (context, next) =>{
-  await next();
+//app.use(async (context, next) =>{
+//   await next();
   
-});
+// });
   
 
 //开启一个http服务
 // 接受http请求并作处理，处理完成后响应
-app.listen(3000, () => {
-  console.log('启动成功')
-});

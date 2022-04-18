@@ -1,4 +1,4 @@
-# book-mgr-fe
+# shop-mgr-fe
 
 ## Project setup
 ```

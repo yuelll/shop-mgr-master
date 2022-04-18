@@ -1,5 +1,5 @@
 {
-  "name": "book-mgr-be",
+  "name": "shop-mgr-be",
   "version": "1.0.0",
   "description": "毕设项目的服务端",
   "main": "index.js",
@@ -12,6 +12,7 @@
   "author": "YL",
   "license": "ISC",
   "dependencies": {
+    "@koa/router": "^10.1.1",
     "koa": "^2.13.4",
     "mongoose": "^6.2.10"
   }
