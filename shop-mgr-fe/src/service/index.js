@@ -1,0 +1,1 @@
+export * as auth from './auth';//导出auth

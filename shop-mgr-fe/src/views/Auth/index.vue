@@ -56,7 +56,11 @@
 
     <a-tab-pane key="2" tab="注册" >
       <div class="item">
-        <a-input size="large" placeholder="你的账号" style="width: 350px" >
+        <a-input 
+         size="large" 
+         placeholder="你的账号" style="width: 350px" 
+         v-model:value="regForm.account"
+         >
           <template 
             v-slot:prefix>
               <UserOutlined />
@@ -65,7 +69,11 @@
         </div>
 
     <div class="item">
-      <a-input size="large" placeholder="你的密码" style="width: 350px" >
+      <a-input
+       size="large" 
+       placeholder="你的密码" style="width: 350px" 
+        v-model:value="regForm.password"
+        >
         <template 
           v-slot:prefix>
               <LockOutlined />
@@ -83,7 +91,10 @@
         </div>
 
               <div class="item">
-                <a-button size="large" type="primary">
+                <a-button 
+                  @click="register"
+                  size="large" 
+                  type="primary">
                   注册
                 </a-button>
               </div>

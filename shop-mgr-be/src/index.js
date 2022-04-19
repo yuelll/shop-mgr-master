@@ -1,64 +1,23 @@
-const koa = require('koa');
-const Router = require('@koa/router');
 
-const app = new koa();
+const Koa = require('koa');
+const koaBody = require('koa-body');
+const Body = require('koa-body');
+const { connect } = require('./db');
+const registerRoutes = require('./routers/');
+const cors = require('@koa/cors');
 
-const router = new Router({
-  prefix:'/auth'
-});
+const app = new Koa();
 
-router.get('/register', async (context) => {
-  context.body = '注册成功';
-});
-
-app.use(router.routes());
-
-app.listen(3000, () => {
-  console.log('启动成功');
-});
-
-//通过app.use注册中间件
-//中间件本质上就是一个函数
-//context上下文-当前请求的相关信息都在里面
-// app.use(async(context, next) =>{
-  // const { request:req } = context;
+connect().then(() => {
+  app.use(cors());
+  app.use(koaBody());
   
-  // const { url } = req;
-
-  // if(url ==='/'){
-  //   context.response.body = '<h1>主页</h1>';
-
-  //   return;
-  // }
-
-  // ///user/list路由
-  // if(url ==='/user/list'){
-  //   context.response.body = '<h1>用户列表</h1>';
-
-  //   return;
-  // }
-
-  
-  // context.body = '404';
-  // console.log(1);
-  // await next();
-  // console.log(3);
-  // context.status = 404;
-  
-//   await next();
- 
-  
-// });
-
-// app.use(async (context, next) =>{
-//   await next();
-// });
-
-//app.use(async (context, next) =>{
-//   await next();
-  
-// });
-  
-
+  registerRoutes(app);
 //开启一个http服务
-// 接受http请求并作处理，处理完成后响应
+//接受http请求并处理，处理完成之后响应
+  
+  app.listen(3000, () => {
+    console.log('启动成功'); 
+  });
+});
+
