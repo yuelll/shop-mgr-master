@@ -1,7 +1,9 @@
 require('./Schemas/User')
+require('./Schemas/InviteCode');//执行文件./Schemas/InviteCode
+
 const mongoose = require('mongoose');
 
-const connect = () =>{
+const connect = () => {
    return new Promise((resolve) =>{
       //去链接数据库
       mongoose.connect('mongodb://127.0.0.1:27017');

@@ -1,18 +1,8 @@
-const getYearByTimeStamp = (ts) =>{
-    const data = new Date(ts);
-
-    return data.getFullYear();
+const getBody = (ctx) =>{
+   return ctx.request.body  || {};
 };
-
-const getDateByTimeStamp = (ts) =>{
-    const data = new Date(ts);
-
-    return data.getDate();
-};
-
 
 module.exports = {
-    getYearByTimeStamp,
-    getDateByTimeStamp,
+    getBody,
 };
 
