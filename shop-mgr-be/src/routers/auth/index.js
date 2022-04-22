@@ -33,7 +33,7 @@ router.post('/register', async (ctx) => {
     }).exec();
 
     //如果没找到邀请码
-    if (!findCode || findCode.user){
+    if ((!findCode) || findCode.user){
       ctx.body = {
         code: 0,
         msg: '邀请码错误',
@@ -48,12 +48,12 @@ router.post('/register', async (ctx) => {
      }).exec();
 
      //判断有没有用户
-     if (findUser) {
+  if (findUser) {
        //如果有 表示已经存在
-         ctx.body = {
-             code: 0,
-             msg:'已存在该用户',
-             data: null,
+     ctx.body = {
+        code: 0,
+        msg:'已存在该用户',
+        data: null,
       };
          return;
      }

@@ -1,4 +1,4 @@
-const getMate = () => {
+const getMeta = () => {
  return {
     createdAt: {
         type: Number,
@@ -12,5 +12,5 @@ const getMate = () => {
  };
 
  module.exports = {
-     getMate,
+     getMeta,
  };

@@ -7,12 +7,23 @@ const routes = [
     name: 'Auth',
     component: () => import(/* webpackChunkName: "about" */ '../views/Auth/index.vue'),
   },
-  // {
-  //   path: '/about',
-  //   name: 'about',
-    
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue'),
-  // },
+   {
+     path: '/',
+     name: 'BasicLayout',
+     component: () => import(/* webpackChunkName: "BasicLayout" */ '../layout/BasicLayout/index.vue'),
+     children: [
+      {
+        path: '/shops',
+        name: 'Shops',
+        component: () => import(/* webpackChunkName: "Shops" */ '../views/Shops/index.vue'),
+       },
+      //  {
+      //   path: 'users',
+      //   name: 'User',
+      //   component: () => import(/* webpackChunkName: "User" */ '../views/User/index.vue'),
+      //  },
+     ],
+   },
 ];
 
 const router = createRouter({
